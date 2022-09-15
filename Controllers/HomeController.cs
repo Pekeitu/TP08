@@ -15,6 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Series = BD.ListarSerie();
+        ViewBag.Actores = BD.ListarActores();
+        ViewBag.Temporada = BD.ListarTemporadas();
         return View();
     }
 

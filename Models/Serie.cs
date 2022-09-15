@@ -1,6 +1,6 @@
 using System;
 
-namespace TP08
+namespace TP08_Finkel_Rozen
 {
     public class Serie
     {
@@ -18,25 +18,31 @@ namespace TP08
             _Sinopsis = Sinopsis;
             _ImagenSerie = ImagenSerie;
         }
+        public Serie(){}
          public int IdSerie
         {
             get {return _IdSerie;}
+            set {_IdSerie = value; }
         }
         public string Nombre
         {
             get {return _Nombre;}
+            set {_Nombre = value; }
         }
         public int AñoInicio
         {
             get {return _AñoInicio;}
+            set {_AñoInicio = value; }
         }
         public string Sinopsis
         {
             get {return _Sinopsis;}
+            set {_Sinopsis = value; }
         }
         public string ImagenSerie
         {
             get {return _ImagenSerie;}
+            set {_ImagenSerie = value; }
         }
     }
 }
