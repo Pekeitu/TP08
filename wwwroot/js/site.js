@@ -2,61 +2,85 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-    function MostrarMasInfo(IdS, Nombre) 
+    function mostrarMasInfo(IdS, nombre) 
     {
+
         $.ajax (
             {
-                type: 'POST',
+                type: 'GET',
                 dataType: 'JSON',
-                url : '/Home/Index',
+                url : '/Home/VerSerie?IdSerie=',
                 data: {IdSerie : IdS},
                 success:
                     function(response)
                     {
-                        $("#StartYear").html("La serie comenzo en "+ response.añoInicio)
-                        $("#Sinopsis").html(response.Sinopsis)
+                        console.log(response.AñoInicio);
+                        let apoyo = `
+                            <p>La serie comenzo en ${response.AñoInicio}</p>
+                            <p>${response.Sinopsis}</p>
+                        `
+                        document.getElementById("NombreSerie").innerHTML = "Sinopsis de la serie "+ nombre;
+                        document.getElementById("Texto").innerHTML = apoyo;
+                        $('#ModalSerie').modal("show");
                     }
             }
         )
     }
-        function MostrarTemporada(IdS, Nombre) 
+        function mostrarTemporada(IdS, nombre) 
     {
         $.ajax (
             {
                 type: 'POST',
                 dataType: 'JSON',
-                url : '/Home/Index',
+                url : '/Home/VerTemporadas?IdSerie=',
                 data: {IdSerie : IdS},
                 success:
                     function(response)
                     {
                         let body = "";
                         response.forEach(element => {
-                            body+=response.TituloTemporada;
+                            body+="<p>"+(element.tituloTemporada)+"</p>";
                         });
-                        $("#Temporadas").html("Temporada " + response.numeroTemporada+". "+ body);
-                        $("#NombreSerie").html(nombre);
+                        let apoyo = `
+                            <p>${body}</p>
+                        `
+                        
+                        document.getElementById("NombreSerie").innerHTML = "Temporadas de la serie "+ nombre;
+                        document.getElementById("Texto").innerHTML = apoyo;
+                        $('#ModalSerie').modal("show");
                     }
             }
         )
     }
-          function MostrarActores(IdS, Nombre ) 
+          function mostrarActores(IdS, nombre ) 
     {
+       
         $.ajax (
             {
                 type: 'POST',
                 dataType: 'JSON',
-                url : '/Home/Index',
+                url : '/Home/VerActores?IdSerie=',
                 data: {IdSerie : IdS},
                 success:
                     function(response)
                     {
                         let body ="";
+                        
                         response.forEach(element => {
-                            body+=response.nombre;
+                            body+="<p>"+(element.nombre)+"</p>";
                         });
-                        $("#Actores").html(body)
+                        let apoyo = `
+                        <p>${body}</p>
+                        `
+                        console.log(apoyo);
+                        document.getElementById("NombreSerie").innerHTML = "Actores de la serie "+ nombre;
+                        document.getElementById("Texto").innerHTML = apoyo;
+                        $('#ModalSerie').modal("show");
                     }
+                
             }
-        )
+        ).fail(
+        function(r){
+            console.log(r);
+        })
     } 

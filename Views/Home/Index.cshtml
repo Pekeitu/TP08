@@ -16,9 +16,9 @@
     <img class="card-img-top" src="@item.ImagenSerie">
     <div class="card-body">
         <h5 class="card-title" >@item.Nombre</h5>
-        <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalSerie" onclick="mostrarTemporada(@item.IdSerie, '@item.Nombre')">Temporadas</button>
-        <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalSerie" onclick="mostrarActores(@item.IdSerie)">Actores</button>
-        <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalSerie" onclick="mostrarMasInfo(@item.IdSerie)">Mas Info</button>
+        <button  class="btn btn-primary" onclick="mostrarTemporada(@item.IdSerie, '@item.Nombre')">Temporadas</button>
+        <button  class="btn btn-primary" onclick="mostrarActores(@item.IdSerie, '@item.Nombre')">Actores</button>
+        <button  class="btn btn-primary" onclick="mostrarMasInfo(@item.IdSerie, '@item.Nombre')">Mas Info</button>
     </div>
     </div>
 }
