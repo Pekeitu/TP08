@@ -9,3 +9,17 @@
         <img class="logo" src="/Logo.png">
     </div>
 </div>
+
+@foreach (Series item in @Viewbag.Series)
+{
+    <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="@item.ImagenSerie" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title" >@ViewBag.Series.Nombre</h5>
+        <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalTemporada" onclick="mostrarTemporada(@item.IdSerie)">Temporadas</button>
+        <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalActores" onclick="mostrarActores(@item.IdSerie)">Actores</button>
+        <button  class="btn btn-primary" data-toggle="modal" data-target="#ModalMasInfo" onclick="mostrarMasInfo(@item.IdSerie)">Mas Info</button>
+    </div>
+    </div>
+}
+
