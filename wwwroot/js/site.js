@@ -4,7 +4,6 @@
 // Write your JavaScript code.
     function mostrarMasInfo(IdS, nombre) 
     {
-
         $.ajax (
             {
                 type: 'GET',
