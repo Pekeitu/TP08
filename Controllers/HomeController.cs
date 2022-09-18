@@ -18,22 +18,19 @@ public class HomeController : Controller
         ViewBag.Series = BD.ListarSerie();
         return View();
     }
-
+    [HttpPost]
     public List<Temporadas> VerTemporadas(int IdSerie){
-        ViewBag.Temporada = BD.ListarTemporadasPorSerie(IdSerie);
-        return ViewBag.Temporada;
+        return BD.ListarTemporadasPorSerie(IdSerie);
     }
-
-    public List<Temporadas> VerSerie(int IdSerie){
-        ViewBag.Serie = BD.ListarSeriePorId(IdSerie);
-        return ViewBag.Serie;
+    [HttpPost]
+    public Serie VerSerie(int IdSerie){
+        return BD.ListarSeriePorId(IdSerie);
     }
-
+    [HttpPost]
     public List<Actor> VerActores(int IdSerie){
-        ViewBag.Actor = BD.ListarActoresPorSerie(IdSerie);
-        return ViewBag.Actor;
+        return BD.ListarActoresPorSerie(IdSerie);
     }
-
+    
     public IActionResult Privacy()
     {
         return View();

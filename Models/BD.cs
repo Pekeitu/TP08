@@ -9,7 +9,7 @@ namespace TP08_Finkel_Rozen
     public static class BD
     {
         
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-012;DataBase=BDSeries;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=DESKTOP-ON8F0P6\SQLEXPRESS;DataBase=BDSeries;Trusted_Connection=True;";
 
         public static List<Serie> ListarSerie()
         {
@@ -21,14 +21,14 @@ namespace TP08_Finkel_Rozen
             return ListaSeries;
         }
 
-        public static List<Serie> ListarSeriePorId(int _IdS)
+        public static Serie ListarSeriePorId(int _IdS)
         {
-           List<Serie> ListaSeries  = new List<Serie>();
+           Serie SerieDel;
             using(SqlConnection db = new SqlConnection(_connectionString)){
                 string sp = "ListarSeriesXId";
-                ListaSeries = db.Query<Serie>(sp, new {IdS = _IdS}, commandType: CommandType.StoredProcedure).ToList();
+                SerieDel = db.QueryFirstOrDefault<Serie>(sp, new {IdS = _IdS}, commandType: CommandType.StoredProcedure);
             }
-            return ListaSeries;
+            return SerieDel;
         }
 
          public static List<Actor> ListarActoresPorSerie(int _IdS)
