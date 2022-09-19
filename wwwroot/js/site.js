@@ -6,17 +6,17 @@
     {
         $.ajax (
             {
-                type: 'GET',
+                type: 'POST',
                 dataType: 'JSON',
                 url : '/Home/VerSerie?IdSerie=',
                 data: {IdSerie : IdS},
                 success:
                     function(response)
                     {
-                        console.log(response.AñoInicio);
+                        console.log(response.añoInicio);
                         let apoyo = `
-                            <p>La serie comenzo en ${response.AñoInicio}</p>
-                            <p>${response.Sinopsis}</p>
+                            <p>La serie comenzo en ${response.añoInicio}</p>
+                            <p>${response.sinopsis}</p>
                         `
                         document.getElementById("NombreSerie").innerHTML = "Sinopsis de la serie "+ nombre;
                         document.getElementById("Texto").innerHTML = apoyo;
